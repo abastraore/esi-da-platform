@@ -25,7 +25,7 @@ function updateAvStats(list) {
 function renderAvCards(list) {
   const grid = document.getElementById('av-grid');
   if (!list.length) {
-    grid.innerHTML = `<div class="empty-state"><div class="icon">📊</div><p>Aucune donnée</p></div>`;
+    grid.innerHTML = `<div class="empty-state"><p>Aucune donnée</p></div>`;
     return;
   }
   grid.innerHTML = list.map((a, i) => {
@@ -42,8 +42,8 @@ function renderAvCards(list) {
         </div>
         <div class="av-meta">${a.heures_realisees || 0}h réalisées / ${a.heures_prevues || 0}h prévues</div>
         <div style="margin-top:10px;display:flex;gap:6px">
-          <button class="btn btn-outline btn-sm" onclick="editAv(${a.id})">✏️ Modifier</button>
-          <button class="btn btn-danger btn-sm" onclick="deleteAv(${a.id})">🗑️</button>
+          <button class="btn btn-outline btn-sm" onclick="editAv(${a.id})">Modifier</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteAv(${a.id})"></button>
         </div>
       </div>`;
   }).join('');
