@@ -42,8 +42,8 @@ function renderEvals(list) {
         <td>${statut}</td>
         <td>
           <div style="display:flex;gap:4px">
-            <button class="btn-icon" onclick="editEval(${e.id})">✏️</button>
-            <button class="btn-icon" onclick="deleteEval(${e.id})">🗑️</button>
+            <button class="btn-icon" onclick="editEval(${e.id})">modifier</button>
+            <button class="btn-icon" onclick="deleteEval(${e.id})">supprimer</button>
           </div>
         </td>
       </tr>`;
