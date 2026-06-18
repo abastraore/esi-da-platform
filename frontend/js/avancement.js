@@ -43,7 +43,7 @@ function renderAvCards(list) {
         <div class="av-meta">${a.heures_realisees || 0}h réalisées / ${a.heures_prevues || 0}h prévues</div>
         <div style="margin-top:10px;display:flex;gap:6px">
           <button class="btn btn-outline btn-sm" onclick="editAv(${a.id})">Modifier</button>
-          <button class="btn btn-danger btn-sm" onclick="deleteAv(${a.id})"></button>
+          <button class="btn btn-danger btn-sm" onclick="deleteAv(${a.id})">supprimer</button>
         </div>
       </div>`;
   }).join('');
