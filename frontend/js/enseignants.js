@@ -24,8 +24,8 @@ function renderEns(list) {
       <td style="font-size:0.75rem;color:var(--text-secondary)">${e.email || '—'}</td>
       <td>
         <div style="display:flex;gap:4px">
-          <button class="btn-icon" onclick="editEns(${e.id || e.enseignant_id})">✏️</button>
-          <button class="btn-icon" onclick="deleteEns(${e.id || e.enseignant_id})">🗑️</button>
+          <button class="btn-icon" onclick="editEns(${e.id || e.enseignant_id})">modifier</button>
+          <button class="btn-icon" onclick="deleteEns(${e.id || e.enseignant_id})">supprimer</button>
         </div>
       </td>
     </tr>`).join('');
