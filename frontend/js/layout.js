@@ -3,18 +3,18 @@
 function buildLayout(pageTitle, activePage) {
   const nav = [
     { section: 'Vue générale', items: [
-      { page: 'dashboard.html', icon: '⊞', label: 'Tableau de bord' },
-      { page: 'emploi_du_temps.html', icon: '📅', label: 'Emplois du temps' },
-      { page: 'cours.html', icon: '📚', label: 'Cours & EC' },
+      { page: 'dashboard.html',label: 'Tableau de bord' },
+      { page: 'emploi_du_temps.html', label: 'Emplois du temps' },
+      { page: 'cours.html',label: 'Cours & EC' },
     ]},
     { section: 'Évaluations', items: [
-      { page: 'evaluations.html', icon: '✏️', label: 'Suivi des évaluations' },
-      { page: 'precedences.html', icon: '🔗', label: 'Précédences' },
-      { page: 'avancement.html', icon: '📊', label: 'Statistiques' },
+      { page: 'evaluations.html',  label: 'Suivi des évaluations' },
+      { page: 'precedences.html',  label: 'Précédences' },
+      { page: 'avancement.html',  label: 'Statistiques' },
     ]},
     { section: 'Administration', items: [
-      { page: 'enseignants.html', icon: '👤', label: 'Enseignants' },
-      { page: 'classes.html',     icon: '🎓', label: 'Classes' },
+      { page: 'enseignants.html',  label: 'Enseignants' },
+      { page: 'classes.html', label: 'Classes' },
     ]},
   ];
 
@@ -22,7 +22,6 @@ function buildLayout(pageTitle, activePage) {
     <div class="nav-section">${section.section}</div>
     ${section.items.map(item => `
       <a href="${item.page}" class="nav-item ${activePage === item.page ? 'active' : ''}" data-page="${item.page}">
-        <span>${item.icon}</span>
         <span>${item.label}</span>
       </a>
     `).join('')}
