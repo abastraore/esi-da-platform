@@ -1,0 +1,63 @@
+/* emploi_du_temps.css */
+.week-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.week-label {
+  font-weight: 600;
+  font-size: 0.88rem;
+  flex: 1;
+  text-align: center;
+  color: var(--text-primary);
+}
+.day-cols {
+  display: grid;
+  grid-template-columns: 58px repeat(5, 1fr);
+  gap: 3px;
+}
+.day-header {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 6px;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.day-header.today {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(88,166,255,0.06);
+}
+.time-label {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  text-align: right;
+  padding-right: 6px;
+  padding-top: 8px;
+}
+.slot {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 5px 8px;
+  min-height: 52px;
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.slot:hover { border-color: var(--border); background: var(--bg-hover); }
+.slot.cours  { background: rgba(26,111,196,0.1);  border-color: rgba(26,111,196,0.35); }
+.slot.tp     { background: rgba(46,160,67,0.1);   border-color: rgba(46,160,67,0.35); }
+.slot.td     { background: rgba(227,148,58,0.1);  border-color: rgba(227,148,58,0.35); }
+.slot.exam   { background: rgba(248,81,73,0.1);   border-color: rgba(248,81,73,0.35); }
+.slot.empty  { background: transparent; border-style: dashed; min-height: 52px; opacity: 0.3; }
+.slot-name   { font-weight: 600; color: var(--text-primary); line-height: 1.2; }
+.slot-meta   { color: var(--text-muted); font-size: 0.66rem; }
+.edt-wrapper { overflow-x: auto; padding: 12px; }

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cours & EC — ESI DA Platform</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="main-wrapper">
+  <div class="page-content">
+
+    <div class="filter-bar">
+      <input type="search" class="search-input" id="search" placeholder="🔍 Rechercher un cours...">
+      <button class="btn btn-primary" onclick="resetCoursModal(); openModal('modal-cours')">+ Nouveau cours</button>
+    </div>
+
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-title">📚 Liste des cours</span>
+        <span class="badge badge-gray" id="cours-count">—</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Intitulé</th><th>Volume</th><th>Enseignant</th><th>Classe</th><th>Début</th><th>Fin</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="cours-tbody">
+            <tr class="loading-row"><td colspan="7"><span class="spinner"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal-cours">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modal-cours-title">Nouveau cours</span>
+      <button class="modal-close" onclick="closeModal('modal-cours')">×</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="cours-id">
+      <div class="form-group">
+        <label class="form-label">Intitulé *</label>
+        <input type="text" class="form-control" id="cours-name" placeholder="ex: Algorithmique avancée">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Volume horaire (h) *</label>
+          <input type="number" class="form-control" id="cours-volume" min="1" placeholder="45">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Enseignant</label>
+          <select class="form-control" id="cours-prof">
+            <option value="">— Sélectionner —</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Classe</label>
+        <select class="form-control" id="cours-level">
+          <option value="">— Sélectionner —</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Date de début *</label>
+          <input type="date" class="form-control" id="cours-debut">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Date de fin *</label>
+          <input type="date" class="form-control" id="cours-fin">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-cours')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveCours()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/cours.js"></script>
+<script>buildLayout('Cours & EC', 'cours.html');</script>
+</body>
+</html>

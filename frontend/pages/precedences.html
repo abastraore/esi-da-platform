@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Précédences — ESI DA Platform</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="main-wrapper">
+  <div class="page-content">
+
+    <div class="filter-bar">
+      <button class="btn btn-primary" onclick="openNewPrec()">+ Ajouter une précédence</button>
+    </div>
+
+    <!-- Explication -->
+    <div class="section-card" style="margin-bottom:14px;padding:14px 16px">
+      <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6">
+        🔗 <strong style="color:var(--text-primary)">Relations de précédence :</strong>
+        une précédence indique qu'un cours <strong>A</strong> ne peut être suivi
+        qu'après validation du cours <strong>B</strong> (prérequis).
+        Ces relations permettent de structurer le parcours pédagogique des étudiants.
+      </p>
+    </div>
+
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-title">🔗 Précédences définies</span>
+        <span class="badge badge-gray" id="prec-count">—</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Cours</th>
+              <th style="width:120px;text-align:center">Relation</th>
+              <th>Prérequis</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="prec-tbody">
+            <tr class="loading-row"><td colspan="4"><span class="spinner"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal précédence -->
+<div class="modal-overlay" id="modal-prec">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">Nouvelle précédence</span>
+      <button class="modal-close" onclick="closeModal('modal-prec')">×</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="prec-id">
+      <div class="form-group">
+        <label class="form-label">Cours *</label>
+        <select class="form-control" id="prec-cours">
+          <option value="">— Sélectionner le cours —</option>
+        </select>
+      </div>
+      <div style="text-align:center;padding:8px;font-size:0.8rem;color:var(--text-muted)">
+        nécessite comme prérequis ↓
+      </div>
+      <div class="form-group">
+        <label class="form-label">Prérequis *</label>
+        <select class="form-control" id="prec-prereq">
+          <option value="">— Sélectionner le prérequis —</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-prec')">Annuler</button>
+      <button class="btn btn-primary" onclick="savePrec()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/precedences.js"></script>
+<script>
+  buildLayout('Précédences', 'precedences.html');
+  // Mettre à jour le compteur après chargement
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new MutationObserver(() => {
+      const rows = document.querySelectorAll('#prec-tbody tr:not(.loading-row)');
+      document.getElementById('prec-count').textContent = rows.length + ' relations';
+    });
+    observer.observe(document.getElementById('prec-tbody'), { childList: true });
+  });
+</script>
+</body>
+</html>

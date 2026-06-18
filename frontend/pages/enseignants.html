@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enseignants — ESI DA Platform</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="main-wrapper">
+  <div class="page-content">
+
+    <div class="filter-bar">
+      <input type="search" class="search-input" id="search" placeholder="🔍 Rechercher un enseignant...">
+      <select class="form-control" id="filter-grade" style="max-width:140px">
+        <option value="">Tous grades</option>
+        <option>DR</option><option>PR</option>
+        <option>MC</option><option>MA</option><option>MR</option>
+      </select>
+      <button class="btn btn-primary" onclick="openNewEnsModal()">+ Ajouter</button>
+    </div>
+
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-title">👤 Enseignants</span>
+        <span class="badge badge-gray" id="ens-count">—</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Nom complet</th><th>Grade</th><th>Module</th><th>Email</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="ens-tbody">
+            <tr class="loading-row"><td colspan="5"><span class="spinner"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal-ens">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modal-ens-title">Nouvel enseignant</span>
+      <button class="modal-close" onclick="closeModal('modal-ens')">×</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="ens-id">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Nom *</label>
+          <input type="text" class="form-control" id="ens-nom" placeholder="Ouédraogo">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Prénom</label>
+          <input type="text" class="form-control" id="ens-prenom" placeholder="Amadou">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Grade *</label>
+          <select class="form-control" id="ens-grade">
+            <option value="">— Sélectionner —</option>
+            <option value="DR">DR — Docteur</option>
+            <option value="PR">PR — Professeur</option>
+            <option value="MC">MC — Maître de Conférences</option>
+            <option value="MA">MA — Maître Assistant</option>
+            <option value="MR">MR — Maître de Recherche</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Module</label>
+          <input type="text" class="form-control" id="ens-module" placeholder="ex: Algorithmique">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" id="ens-email" placeholder="a.oued@esi.bf">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-ens')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveEns()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/enseignants.js"></script>
+<script>buildLayout('Enseignants', 'enseignants.html');</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Étudiants — ESI DA Platform</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="main-wrapper">
+  <div class="page-content">
+
+    <div class="filter-bar">
+      <input type="search" class="search-input" id="search" placeholder="🔍 Rechercher un étudiant...">
+      <button class="btn btn-primary" onclick="openNewEtudModal()">+ Ajouter</button>
+    </div>
+
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-title">🎓 Étudiants</span>
+        <span class="badge badge-gray" id="etud-count">—</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Nom complet</th><th>Matricule</th><th>Classe</th><th>Email</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="etud-tbody">
+            <tr class="loading-row"><td colspan="5"><span class="spinner"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal-etud">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modal-etud-title">Nouvel étudiant</span>
+      <button class="modal-close" onclick="closeModal('modal-etud')">×</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="etud-id">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Nom *</label>
+          <input type="text" class="form-control" id="etud-nom" placeholder="Sawadogo">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Prénom</label>
+          <input type="text" class="form-control" id="etud-prenom" placeholder="Fatima">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Matricule</label>
+          <input type="text" class="form-control" id="etud-matricule" placeholder="ESI2024001">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Classe</label>
+          <select class="form-control" id="etud-classe">
+            <option value="">— Classe —</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" id="etud-email" placeholder="f.sawadogo@esi.bf">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-etud')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveEtudiant()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/etudiants.js"></script>
+<script>buildLayout('Étudiants', 'etudiants.html');</script>
+</body>
+</html>

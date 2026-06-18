@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Évaluations — ESI DA Platform</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="main-wrapper">
+  <div class="page-content">
+
+    <div class="filter-bar">
+      <input type="search" class="search-input" id="search" placeholder="🔍 Rechercher...">
+      <select class="form-control" id="filter-type" style="max-width:160px">
+        <option value="">Tous types</option>
+        <option value="devoir">Devoir</option>
+        <option value="tp">TP</option>
+        <option value="interrogation">Interrogation</option>
+        <option value="examen">Examen</option>
+      </select>
+      <button class="btn btn-primary" onclick="openNewEvalModal()">+ Ajouter</button>
+    </div>
+
+    <!-- Stats rapides -->
+    <div class="stats-grid" style="margin-bottom:14px">
+      <div class="stat-card blue">
+        <div class="stat-label">Total</div>
+        <div class="stat-value" id="s-total">—</div>
+      </div>
+      <div class="stat-card green">
+        <div class="stat-label">Passées</div>
+        <div class="stat-value" id="s-passees">—</div>
+      </div>
+      <div class="stat-card orange">
+        <div class="stat-label">À venir</div>
+        <div class="stat-value" id="s-avenir">—</div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-title">Suivi des évaluations</span>
+        <span class="badge badge-gray" id="eval-count">—</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Cours</th><th>Type</th><th>Date</th><th>Coefficient</th><th>Statut</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="eval-tbody">
+            <tr class="loading-row"><td colspan="6"><span class="spinner"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal-eval">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modal-eval-title">Nouvelle évaluation</span>
+      <button class="modal-close" onclick="closeModal('modal-eval')">×</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="eval-id">
+      <div class="form-group">
+        <label class="form-label">Cours *</label>
+        <select class="form-control" id="eval-cours">
+          <option value="">— Sélectionner un cours —</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Type *</label>
+          <select class="form-control" id="eval-type">
+            <option value="devoir">Devoir</option>
+            <option value="tp">TP</option>
+            <option value="interrogation">Interrogation</option>
+            <option value="examen">Examen</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Coefficient *</label>
+          <input type="number" class="form-control" id="eval-coef" min="1" max="5" placeholder="1">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Date *</label>
+        <input type="date" class="form-control" id="eval-date">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-eval')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveEval()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/evaluations.js"></script>
+<script>buildLayout('Suivi des évaluations', 'evaluations.html');</script>
+</body>
+</html>

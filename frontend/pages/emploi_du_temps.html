@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emploi du temps — ESI DA Platform</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/emploi_du_temps.css">
+</head>
+<body>
+<div class="main-wrapper">
+  <div class="page-content">
+
+    <!-- Barre de contrôle -->
+    <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center">
+      <select class="form-control" id="filter-classe" style="max-width:180px">
+        <option value="">Toutes les classes</option>
+      </select>
+      <div class="week-nav" style="flex:1">
+        <button class="btn btn-outline btn-sm" onclick="changeWeek(-1)">← Précédente</button>
+        <span class="week-label" id="week-label"></span>
+        <button class="btn btn-outline btn-sm" onclick="changeWeek(1)">Suivante →</button>
+      </div>
+      <button class="btn btn-primary" onclick="openNewSeance()">+ Séance</button>
+    </div>
+
+    <!-- Vue semaine -->
+    <div class="section-card" style="margin-bottom:14px">
+      <div class="edt-wrapper" id="edt-view">
+        <div style="text-align:center;padding:30px;color:var(--text-muted)"><span class="spinner"></span></div>
+      </div>
+    </div>
+
+    <!-- Liste toutes séances -->
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-title">Toutes les séances</span>
+        <span class="badge badge-gray" id="seances-count">—</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Cours</th><th>Date</th><th>Horaire</th><th>Salle</th><th>Type</th><th>Enseignant</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="seances-tbody">
+            <tr class="loading-row"><td colspan="7"><span class="spinner"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal séance -->
+<div class="modal-overlay" id="modal-seance">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modal-seance-title">Nouvelle séance</span>
+      <button class="modal-close" onclick="closeModal('modal-seance')">×</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="seance-id">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Cours *</label>
+          <select class="form-control" id="seance-cours">
+            <option value="">— Cours —</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Classe</label>
+          <select class="form-control" id="seance-classe">
+            <option value="">— Classe —</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Enseignant</label>
+          <select class="form-control" id="seance-ens">
+            <option value="">— Enseignant —</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Type</label>
+          <select class="form-control" id="seance-type">
+            <option value="COURS">COURS</option>
+            <option value="TP">TP</option>
+            <option value="TD">TD</option>
+            <option value="EXAM">EXAM</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Date *</label>
+          <input type="date" class="form-control" id="seance-date">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Salle</label>
+          <input type="text" class="form-control" id="seance-salle" placeholder="ex: Salle B204">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Heure début *</label>
+          <input type="time" class="form-control" id="seance-debut">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Heure fin *</label>
+          <input type="time" class="form-control" id="seance-fin">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-seance')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveSeance()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/emploi_du_temps.js"></script>
+<script>buildLayout('Emploi du temps', 'emploi_du_temps.html');</script>
+</body>
+</html>

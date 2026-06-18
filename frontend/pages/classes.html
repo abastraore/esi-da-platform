@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Classes — ESI DA Platform</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="main-wrapper">
+  <div class="page-content">
+
+    <div class="filter-bar">
+      <select class="form-control" id="filter-opt" style="max-width:150px">
+        <option value="">Toutes options</option>
+        <option>TC1</option><option>TC2</option>
+        <option>ISI</option><option>IRS</option>
+      </select>
+      <button class="btn btn-primary" onclick="openNewClsModal()">+ Ajouter</button>
+    </div>
+
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-title">🎓 Classes</span>
+        <span class="badge badge-gray" id="cls-count">—</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Niveau</th><th>Option</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="cls-tbody">
+            <tr class="loading-row"><td colspan="3"><span class="spinner"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal-cls">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modal-cls-title">Nouvelle classe</span>
+      <button class="modal-close" onclick="closeModal('modal-cls')">×</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="cls-id">
+      <div class="form-group">
+        <label class="form-label">Niveau *</label>
+        <input type="text" class="form-control" id="cls-level" placeholder="ex: Licence 2">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Option *</label>
+        <select class="form-control" id="cls-option">
+          <option value="">— Sélectionner —</option>
+          <option value="TC1">TC1</option>
+          <option value="TC2">TC2</option>
+          <option value="ISI">ISI</option>
+          <option value="IRS">IRS</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-cls')">Annuler</button>
+      <button class="btn btn-primary" onclick="saveCls()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/classes.js"></script>
+<script>buildLayout('Classes', 'classes.html');</script>
+</body>
+</html>

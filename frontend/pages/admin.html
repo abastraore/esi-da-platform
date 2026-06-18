@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connexion — ESI DA Platform</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { display:flex; align-items:center; justify-content:center; min-height:100vh; background:var(--bg-base); }
+    .login-box {
+      width:100%; max-width:380px;
+      background:var(--bg-card);
+      border:1px solid var(--border);
+      border-radius:var(--radius-lg);
+      padding:32px;
+      box-shadow:var(--shadow);
+    }
+    .login-logo { text-align:center; margin-bottom:28px; }
+    .login-logo .brand { font-size:1.4rem; font-weight:700; color:var(--accent-cyan); }
+    .login-logo .sub   { font-size:0.8rem; color:var(--text-muted); margin-top:4px; }
+    .login-error {
+      background:rgba(248,81,73,0.1); border:1px solid rgba(248,81,73,0.3);
+      color:#ff7b72; border-radius:var(--radius-sm);
+      padding:8px 12px; font-size:0.8rem; margin-bottom:14px; display:none;
+    }
+    .login-btn { width:100%; padding:10px; font-size:0.88rem; margin-top:4px; }
+    .login-footer { text-align:center; margin-top:16px; font-size:0.75rem; color:var(--text-muted); }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <div class="login-logo">
+      <div class="brand">ESI · DA Platform</div>
+      <div class="sub">Gestion académique 2024–25</div>
+    </div>
+    <div class="login-error" id="login-error"></div>
+    <div class="form-group">
+      <label class="form-label">Identifiant</label>
+      <input type="text" class="form-control" id="login-input" placeholder="ex: da_esi" autocomplete="username">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Mot de passe</label>
+      <input type="password" class="form-control" id="password-input" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="btn btn-primary login-btn" id="login-btn" onclick="login()">Se connecter</button>
+    <div class="login-footer">École Supérieure d'Informatique — Bobo-Dioulasso</div>
+  </div>
+
+  <script>const API_BASE = 'http://localhost:8080/projet_tutore_final/projet_tutore/backend';</script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

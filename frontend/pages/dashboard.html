@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tableau de bord — ESI DA Platform</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+<div class="main-wrapper">
+  <div class="page-content">
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card blue">
+        <div class="stat-label">📚 Cours programmés</div>
+        <div class="stat-value" id="stat-cours">—</div>
+        <div class="stat-sub"></div>
+      </div>
+      <div class="stat-card green">
+        <div class="stat-label">🟢 EC en cours</div>
+        <div class="stat-value" id="stat-ec">—</div>
+        <div class="stat-sub up" id="stat-ec-sub"></div>
+      </div>
+      <div class="stat-card orange">
+        <div class="stat-label">✅ Évaluations</div>
+        <div class="stat-value" id="stat-eval">—</div>
+        <div class="stat-sub" id="stat-eval-sub"></div>
+      </div>
+      <div class="stat-card cyan">
+        <div class="stat-label">👤 Enseignants</div>
+        <div class="stat-value" id="stat-ens">—</div>
+        <div class="stat-sub"></div>
+      </div>
+    </div>
+
+    <!-- Grille principale -->
+    <div class="grid-2">
+      <!-- Séances du jour -->
+      <div class="section-card">
+        <div class="section-header">
+          <span class="section-title">📅 Emploi du temps — Aujourd'hui</span>
+          <a href="emploi_du_temps.html" class="btn btn-outline btn-sm">Voir tout →</a>
+        </div>
+        <div id="seances-today">
+          <div style="text-align:center;padding:30px;color:var(--text-muted)"><span class="spinner"></span></div>
+        </div>
+      </div>
+
+      <!-- Avancement EC -->
+      <div class="section-card">
+        <div class="section-header">
+          <span class="section-title">📊 Avancement des EC</span>
+          <a href="avancement.html" class="btn btn-outline btn-sm">Détails →</a>
+        </div>
+        <div class="avancement-list" id="avancement-list">
+          <div style="text-align:center;padding:30px;color:var(--text-muted)"><span class="spinner"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cours récents -->
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-title">📚 Cours récents</span>
+        <a href="cours.html" class="btn btn-primary btn-sm">Gérer les cours</a>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Intitulé</th><th>Volume</th><th>Enseignant</th><th>Classe</th><th>Période</th>
+            </tr>
+          </thead>
+          <tbody id="cours-table">
+            <tr class="loading-row"><td colspan="5"><span class="spinner"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/dashboard.js"></script>
+<script>buildLayout('Tableau de bord', 'dashboard.html');</script>
+</body>
+</html>
