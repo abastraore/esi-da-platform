@@ -36,7 +36,7 @@ async function loadDashboard() {
     const seancesEl = document.getElementById('seances-today');
 
     if (todaySeances.length === 0) {
-      seancesEl.innerHTML = `<div class="empty-state"><div class="icon">📅</div><p>Aucune séance aujourd'hui</p></div>`;
+      seancesEl.innerHTML = `<div class="empty-state"><p>Aucune séance aujourd'hui</p></div>`;
     } else {
       seancesEl.innerHTML = todaySeances.map(s => `
         <div class="edt-row">
