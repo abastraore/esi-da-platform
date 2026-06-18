@@ -19,7 +19,7 @@ function renderPrecs(list) {
       <td>→</td>
       <td>${p.prereq_name || '—'}<br><small>${p.prereq_code || ''}</small></td>
       <td>
-        <button class="btn-icon" onclick="deletePrec(${p.ec_id})">🗑️</button>
+        <button class="btn-icon" onclick="deletePrec(${p.ec_id})">supprimer</button>
       </td>
     </tr>`).join('');
 }
