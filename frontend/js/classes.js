@@ -21,8 +21,8 @@ function renderCls(list) {
       <td><span class="badge ${OPT_BADGE[c.option] || 'badge-gray'}">${c.option}</span></td>
       <td>
         <div style="display:flex;gap:4px">
-          <button class="btn-icon" onclick="editCls(${c.classe_id || c.id})">✏️</button>
-          <button class="btn-icon" onclick="deleteCls(${c.classe_id || c.id})">🗑️</button>
+          <button class="btn-icon" onclick="editCls(${c.classe_id || c.id})"></button>
+          <button class="btn-icon" onclick="deleteCls(${c.classe_id || c.id})"></button>
         </div>
       </td>
     </tr>`).join('');
