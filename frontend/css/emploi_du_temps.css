@@ -61,3 +61,33 @@
 .slot-name   { font-weight: 600; color: var(--text-primary); line-height: 1.2; }
 .slot-meta   { color: var(--text-muted); font-size: 0.66rem; }
 .edt-wrapper { overflow-x: auto; padding: 12px; }
+
+/* ── Emploi du temps responsive ─────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Grille semaine : scroll horizontal */
+  .edt-wrapper { padding: 8px 0; }
+  .day-cols {
+    grid-template-columns: 40px repeat(5, minmax(80px, 1fr));
+    min-width: 460px;
+  }
+
+  /* Vue semaine scrollable */
+  .edt-scroll-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+  }
+
+  .week-nav { flex-wrap: wrap; gap: 6px; }
+  .slot { min-height: 44px; font-size: 0.68rem; padding: 4px 6px; }
+  .slot-name { font-size: 0.7rem; }
+}
+
+@media (max-width: 480px) {
+  .day-cols {
+    grid-template-columns: 36px repeat(5, minmax(70px, 1fr));
+    min-width: 390px;
+  }
+  .day-header { font-size: 0.65rem; padding: 6px 3px; }
+  .time-label { font-size: 0.6rem; }
+}

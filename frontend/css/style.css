@@ -675,3 +675,67 @@ tbody tr:last-child { border-bottom: none; }
   table { font-size: 0.78rem; }
   th, td { padding: 8px 10px !important; }
 }
+
+/* ── Améliorations responsive mobile (ajout déploiement) ─────────── */
+
+/* Tableaux : scroll horizontal sur mobile */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  /* Tableaux défilables */
+  table { min-width: 500px; }
+
+  /* Modals plein écran sur mobile */
+  .modal-overlay { align-items: flex-end; padding: 0; }
+  .modal {
+    max-width: 100% !important;
+    width: 100% !important;
+    border-radius: 16px 16px 0 0;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  /* Boutons plus grands (touch-friendly) */
+  .btn { min-height: 40px; padding: 8px 14px; }
+
+  /* Formulaires pleine largeur */
+  .form-group input,
+  .form-group select,
+  .form-group textarea { font-size: 16px; } /* évite le zoom iOS */
+
+  /* Section header : empiler sur mobile */
+  .section-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Topbar : réduire */
+  .topbar { height: 52px; }
+  .brand  { font-size: 0.95rem; }
+}
+
+@media (max-width: 480px) {
+  /* Stats : 1 colonne */
+  .stats-grid { grid-template-columns: 1fr !important; }
+
+  /* Page content : padding réduit */
+  .page-content { padding: 10px !important; }
+
+  /* Stat cards : plus compactes */
+  .stat-card { padding: 14px 16px; }
+  .stat-value { font-size: 1.6rem; }
+
+  /* Cacher colonnes secondaires dans les tableaux */
+  .hide-mobile { display: none !important; }
+
+  /* Filtres : colonne unique */
+  .filters-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filters-bar input,
+  .filters-bar select { width: 100%; }
+}

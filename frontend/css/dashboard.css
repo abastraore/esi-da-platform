@@ -65,3 +65,12 @@
 @media (max-width: 768px) {
   .grid-2 { grid-template-columns: 1fr; }
 }
+
+/* ── Dashboard responsive ────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .avancement-item { flex-wrap: wrap; gap: 6px; }
+  .avancement-bar  { min-width: 100%; order: 3; }
+  .avancement-name { font-size: 0.8rem; }
+  .edt-row { flex-direction: column; gap: 4px; }
+  .edt-time { width: auto; text-align: left; }
+}
