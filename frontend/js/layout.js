@@ -31,7 +31,7 @@ function buildLayout(pageTitle, activePage) {
     <aside class="sidebar">
       <div class="sidebar-logo">
         <div class="brand">ESI · DA Platform</div>
-        <div class="sub">Gestion académique 2024–25</div>
+        <div class="sub">Projet tutore 25–26</div>
       </div>
       <nav class="sidebar-nav">${navHTML}</nav>
       <div class="sidebar-footer">
