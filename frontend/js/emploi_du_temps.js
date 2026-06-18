@@ -92,8 +92,8 @@ function renderSeancesTable() {
       <td>${s.enseignant_nom ? s.enseignant_nom + ' ' + (s.enseignant_prenom || '') : '—'}</td>
       <td>
         <div style="display:flex;gap:4px">
-          <button class="btn-icon" onclick="editSeance(${s.id || s.id_table})">✏️</button>
-          <button class="btn-icon" onclick="deleteSeance(${s.id || s.id_table})">🗑️</button>
+          <button class="btn-icon" onclick="editSeance(${s.id || s.id_table})">modfifier</button>
+          <button class="btn-icon" onclick="deleteSeance(${s.id || s.id_table})">supprimer</button>
         </div>
       </td>
     </tr>`).join('');
