@@ -1,4 +1,3 @@
-// enseignants.js
 let allEns = [];
 
 async function loadEns() {
