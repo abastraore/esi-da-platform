@@ -1,6 +1,3 @@
-// js/api.js — client HTTP centralisé
-// En production, remplace cette URL par celle de ton service Render
-// Ex: https://esi-da-platform-backend.onrender.com
 
 const API_BASE = window.API_BASE_URL || 'http://localhost:8080/projet_tutore_final/projet_tutore/backend';
 
@@ -29,7 +26,6 @@ const api = {
   put:    (endpoint, data) => api.request('PUT',    endpoint, data),
   delete: (endpoint)       => api.request('DELETE', endpoint),
 
-  // ── Endpoints ────────────────────────────────────────────────
   cours:       { getAll: ()      => api.get('/api/cours'),
                  get:    id      => api.get(`/api/cours/${id}`),
                  create: d       => api.post('/api/cours', d),
