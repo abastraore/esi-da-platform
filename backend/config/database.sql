@@ -1,7 +1,3 @@
--- ============================================================
---  database.sql  —  Schéma PostgreSQL du projet ESI DA Platform
---  Déploiement : Supabase (PostgreSQL)
--- ============================================================
 
 DROP TABLE IF EXISTS AVANCEMENT_COURS    CASCADE;
 DROP TABLE IF EXISTS EVALUATION          CASCADE;
@@ -14,7 +10,6 @@ DROP TABLE IF EXISTS CLASSES             CASCADE;
 DROP TABLE IF EXISTS ENSEIGNANT          CASCADE;
 DROP TABLE IF EXISTS USERS               CASCADE;
 
--- ── 1. USERS ──────────────────────────────────────────────
 CREATE TABLE USERS (
     id         SERIAL PRIMARY KEY,
     login      VARCHAR(50)  NOT NULL UNIQUE,
@@ -23,7 +18,6 @@ CREATE TABLE USERS (
     CONSTRAINT chk_role CHECK (role IN ('admin','enseignant','etudiant'))
 );
 
--- ── 2. ENSEIGNANT ─────────────────────────────────────────
 CREATE TABLE ENSEIGNANT (
     id                 SERIAL PRIMARY KEY,
     nom                VARCHAR(100) NOT NULL,
@@ -34,7 +28,6 @@ CREATE TABLE ENSEIGNANT (
     CONSTRAINT chk_grade CHECK (grade IN ('DR','PR','MC','MA','MR'))
 );
 
--- ── 3. CLASSES ────────────────────────────────────────────
 CREATE TABLE CLASSES (
     id       SERIAL PRIMARY KEY,
     libelle  VARCHAR(20)  NOT NULL,
@@ -43,7 +36,6 @@ CREATE TABLE CLASSES (
     CONSTRAINT chk_option CHECK (option IN ('TC1','TC2','ISI','IRS'))
 );
 
--- ── 4. ETUDIANT ───────────────────────────────────────────
 CREATE TABLE ETUDIANT (
     id         SERIAL PRIMARY KEY,
     matricule  VARCHAR(20)  NOT NULL UNIQUE,
@@ -52,8 +44,6 @@ CREATE TABLE ETUDIANT (
     email      VARCHAR(150) UNIQUE,
     classe_id  INTEGER REFERENCES CLASSES(id) ON DELETE SET NULL
 );
-
--- ── 5. COURS ──────────────────────────────────────────────
 CREATE TABLE COURS (
     cours_id      SERIAL PRIMARY KEY,
     cours_name    VARCHAR(100) NOT NULL,
@@ -64,7 +54,7 @@ CREATE TABLE COURS (
     cours_level   INTEGER REFERENCES CLASSES(id)    ON DELETE CASCADE
 );
 
--- ── 6. ELEMENT_CONSTITUTIF (EC) ───────────────────────────
+
 CREATE TABLE ELEMENT_CONSTITUTIF (
     id            SERIAL PRIMARY KEY,
     code          VARCHAR(20)  NOT NULL UNIQUE,
@@ -75,7 +65,7 @@ CREATE TABLE ELEMENT_CONSTITUTIF (
     prerequis_id  INTEGER REFERENCES ELEMENT_CONSTITUTIF(id)  ON DELETE SET NULL
 );
 
--- ── 7. SEANCE ─────────────────────────────────────────────
+
 CREATE TABLE SEANCE (
     id            SERIAL PRIMARY KEY,
     ec_id         INTEGER REFERENCES ELEMENT_CONSTITUTIF(id) ON DELETE CASCADE,
@@ -90,7 +80,7 @@ CREATE TABLE SEANCE (
     CONSTRAINT chk_type_seance CHECK (type_seance IN ('COURS','TP','TD'))
 );
 
--- ── 8. EVALUATION ─────────────────────────────────────────
+
 CREATE TABLE EVALUATION (
     id               SERIAL PRIMARY KEY,
     cours_id         INTEGER REFERENCES COURS(cours_id) ON DELETE CASCADE,
@@ -103,7 +93,7 @@ CREATE TABLE EVALUATION (
     CONSTRAINT chk_statut_eval CHECK (statut    IN ('a_venir','planifie','termine'))
 );
 
--- ── 9. AVANCEMENT_COURS ───────────────────────────────────
+
 CREATE TABLE AVANCEMENT_COURS (
     id                SERIAL PRIMARY KEY,
     cours_id          INTEGER REFERENCES COURS(cours_id) ON DELETE CASCADE,
@@ -116,10 +106,6 @@ CREATE TABLE AVANCEMENT_COURS (
                           END
                       ) STORED
 );
-
--- ============================================================
---  DONNÉES DE TEST
--- ============================================================
 
 INSERT INTO ENSEIGNANT (nom, prenom, email, module, grade) VALUES
 ('Traoré',    'Moussa',   'traore@esi.bf',    'Algorithmique',    'PR'),
@@ -176,7 +162,5 @@ INSERT INTO AVANCEMENT_COURS (cours_id, heures_prevues, heures_realisees) VALUES
 (4, 35, 20),
 (5, 40, 36);
 
--- Compte admin — mot de passe : admin1234
--- Hash PHP: password_hash('admin1234', PASSWORD_BCRYPT)
 INSERT INTO USERS (login, password, role) VALUES
 ('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
