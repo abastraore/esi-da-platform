@@ -1,4 +1,3 @@
-// dashboard.js
 const COLORS = ['#58a6ff','#2ea043','#e3943a','#f85149','#a371f7','#56d364','#ffa657','#79c0ff'];
 
 async function loadDashboard() {
@@ -17,7 +16,6 @@ async function loadDashboard() {
     const avancData = avancement.value || [];
     const seancesData = seances.value || [];
 
-    // ── Stats ──────────────────────────────────────────────────────────
     document.getElementById('stat-cours').textContent = coursData.length;
     document.getElementById('stat-ens').textContent   = ensData.length;
     document.getElementById('stat-eval').textContent  = evalData.length;
@@ -30,7 +28,6 @@ async function loadDashboard() {
     document.getElementById('stat-eval-sub').textContent = evalData.length
       ? `${Math.round(evalPassees / evalData.length * 100)}% taux de complétion` : '';
 
-    // ── Séances du jour ────────────────────────────────────────────────
     const today = new Date().toISOString().split('T')[0];
     const todaySeances = seancesData.filter(s => s.date_seance?.startsWith(today));
     const seancesEl = document.getElementById('seances-today');
@@ -53,7 +50,6 @@ async function loadDashboard() {
       `).join('');
     }
 
-    // ── Avancement ─────────────────────────────────────────────────────
     const avList = document.getElementById('avancement-list');
     if (!avancData.length) {
       avList.innerHTML = `<div class="empty-state"><p>Aucune donnée d'avancement</p></div>`;
@@ -76,7 +72,6 @@ async function loadDashboard() {
       }).join('');
     }
 
-    // ── Tableau cours récents ──────────────────────────────────────────
     const tbody = document.getElementById('cours-table');
     if (!coursData.length) {
       renderTableEmpty(tbody, 5, 'Aucun cours enregistré');
