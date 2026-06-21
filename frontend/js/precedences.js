@@ -1,4 +1,3 @@
-// js/precedences.js
 let allPrecs = [];
 
 async function loadPrecs() {
