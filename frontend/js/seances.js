@@ -1,4 +1,3 @@
-// seances.js — page dédiée à la liste des séances
 let allSeancesList = [];
 
 async function loadSeancesList() {
