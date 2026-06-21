@@ -11,7 +11,6 @@
 <div class="main-wrapper">
   <div class="page-content">
 
-    <!-- Barre de contrôle -->
     <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center">
       <select class="form-control" id="filter-classe" style="max-width:180px">
         <option value="">Toutes les classes</option>
@@ -24,14 +23,12 @@
       <button class="btn btn-primary" onclick="openNewSeance()">+ Séance</button>
     </div>
 
-    <!-- Vue semaine -->
     <div class="section-card" style="margin-bottom:14px">
       <div class="edt-wrapper" id="edt-view">
         <div style="text-align:center;padding:30px;color:var(--text-muted)"><span class="spinner"></span></div>
       </div>
     </div>
 
-    <!-- Liste toutes séances -->
     <div class="section-card">
       <div class="section-header">
         <span class="section-title">Toutes les séances</span>
@@ -52,7 +49,6 @@
   </div>
 </div>
 
-<!-- Modal séance -->
 <div class="modal-overlay" id="modal-seance">
   <div class="modal">
     <div class="modal-header">
