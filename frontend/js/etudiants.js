@@ -1,4 +1,3 @@
-// etudiants.js
 let allEtudiants = [];
 
 async function loadEtudiants() {
