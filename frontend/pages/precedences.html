@@ -14,7 +14,6 @@
       <button class="btn btn-primary" onclick="openNewPrec()">+ Ajouter une précédence</button>
     </div>
 
-    <!-- Explication -->
     <div class="section-card" style="margin-bottom:14px;padding:14px 16px">
       <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6">
          <strong style="color:var(--text-primary)">Relations de précédence :</strong>
@@ -49,7 +48,6 @@
   </div>
 </div>
 
-<!-- Modal précédence -->
 <div class="modal-overlay" id="modal-prec">
   <div class="modal">
     <div class="modal-header">
@@ -88,7 +86,6 @@
 <script src="../js/precedences.js"></script>
 <script>
   buildLayout('Précédences', 'precedences.html');
-  // Mettre à jour le compteur après chargement
   document.addEventListener('DOMContentLoaded', () => {
     const observer = new MutationObserver(() => {
       const rows = document.querySelectorAll('#prec-tbody tr:not(.loading-row)');
