@@ -1,10 +1,6 @@
 <?php
-// backend/config/database.php
 
 function getConnection(): PDO {
-
-    // Support de DATABASE_URL (format Render/Heroku)
-    // ex: postgres://user:password@host:5432/dbname
     if (!empty($_ENV['DATABASE_URL']) || !empty(getenv('DATABASE_URL'))) {
         $url = $_ENV['DATABASE_URL'] ?? getenv('DATABASE_URL');
         $parsed = parse_url($url);
@@ -14,7 +10,6 @@ function getConnection(): PDO {
         $user     = $parsed['user'];
         $password = $parsed['pass'];
     } else {
-        // Lecture du fichier .env local
         $envFile = __DIR__ . '/../.env';
         $env = file_exists($envFile) ? parse_ini_file($envFile) : [];
 
