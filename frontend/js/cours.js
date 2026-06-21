@@ -1,4 +1,3 @@
-// cours.js
 let allCours = [];
 
 async function loadCours() {
