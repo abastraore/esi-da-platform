@@ -1,5 +1,3 @@
-// auth.js — gestion de la connexion / session
-
 async function login() {
   const login    = document.getElementById('login-input').value.trim();
   const password = document.getElementById('password-input').value;
@@ -26,11 +24,9 @@ async function login() {
 
     if (!res.ok) throw new Error(data.error || 'Identifiants incorrects');
 
-    // Stocker la session
     sessionStorage.setItem('esi_user',  JSON.stringify(data.user || { login }));
     sessionStorage.setItem('esi_token', data.token || 'ok');
 
-    // Rediriger vers le dashboard
     window.location.href = 'dashboard.html';
 
   } catch (err) {
@@ -52,7 +48,6 @@ function requireAuth() {
   if (!token) window.location.href = 'admin.html';
 }
 
-// Connexion sur Entrée
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('password-input')?.addEventListener('keydown', e => {
     if (e.key === 'Enter') login();
