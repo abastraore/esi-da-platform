@@ -1,4 +1,3 @@
-// classes.js
 const OPT_BADGE = { TC1:'badge-blue', TC2:'badge-cyan', ISI:'badge-green', IRS:'badge-purple' };
 let allCls = [];
 
