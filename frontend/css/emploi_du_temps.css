@@ -1,4 +1,3 @@
-/* emploi_du_temps.css */
 .week-nav {
   display: flex;
   align-items: center;
@@ -62,16 +61,12 @@
 .slot-meta   { color: var(--text-muted); font-size: 0.66rem; }
 .edt-wrapper { overflow-x: auto; padding: 12px; }
 
-/* ── Emploi du temps responsive ─────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Grille semaine : scroll horizontal */
   .edt-wrapper { padding: 8px 0; }
   .day-cols {
     grid-template-columns: 40px repeat(5, minmax(80px, 1fr));
     min-width: 460px;
   }
-
-  /* Vue semaine scrollable */
   .edt-scroll-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
