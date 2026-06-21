@@ -1,4 +1,3 @@
-// emploi_du_temps.js
 let allSeances = [];
 let currentWeekOffset = 0;
 const DAYS  = ['Lun','Mar','Mer','Jeu','Ven'];
