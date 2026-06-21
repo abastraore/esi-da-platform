@@ -1,4 +1,3 @@
-// evaluations.js
 const TYPE_BADGE = {
   devoir: 'badge-blue', tp: 'badge-green',
   interrogation: 'badge-orange', examen: 'badge-red',
