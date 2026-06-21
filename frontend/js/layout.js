@@ -1,5 +1,3 @@
-// js/layout.js — injecte la sidebar + topbar dans chaque page
-
 function buildLayout(pageTitle, activePage) {
   const nav = [
     { section: 'Vue générale', items: [
@@ -53,18 +51,15 @@ function buildLayout(pageTitle, activePage) {
     </header>
   `;
 
-  // Injection
   document.body.insertAdjacentHTML('afterbegin', sidebar);
   const wrapper = document.querySelector('.main-wrapper');
   if (wrapper) wrapper.insertAdjacentHTML('afterbegin', topbar);
 
-  // Overlay pour fermer la sidebar en cliquant à côté (mobile)
   const overlay = document.createElement('div');
   overlay.className = 'sidebar-backdrop';
   overlay.onclick = closeSidebar;
   document.body.appendChild(overlay);
 
-  // Fermer la sidebar quand on clique un lien (mobile)
   document.querySelectorAll('.nav-item').forEach(a => {
     a.addEventListener('click', closeSidebar);
   });
