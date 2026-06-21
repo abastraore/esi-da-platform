@@ -1,4 +1,3 @@
-// avancement.js
 const AV_COLORS = ['#58a6ff','#2ea043','#e3943a','#f85149','#a371f7','#56d364','#ffa657','#79c0ff'];
 let allAv = [];
 
@@ -49,7 +48,6 @@ function renderAvCards(list) {
   }).join('');
 }
 
-// Recalcul du % en temps réel
 function updateAvPreview() {
   const prev = parseInt(document.getElementById('av-prevues').value)   || 0;
   const real = parseInt(document.getElementById('av-realisees').value) || 0;
