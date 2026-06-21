@@ -23,8 +23,8 @@ function renderCours(list) {
       <td style="font-size:0.75rem">${fmtDate(c.cours_fin)}</td>
       <td>
         <div style="display:flex;gap:4px">
-          <button class="btn-icon" title="Modifier" onclick="editCours(${c.cours_id})"></button>
-          <button class="btn-icon" title="Supprimer" onclick="deleteCours(${c.cours_id})"></button>
+          <button class="btn-icon" title="Modifier" onclick="editCours(${c.cours_id})">Modifier</button>
+          <button class="btn-icon" title="Supprimer" onclick="deleteCours(${c.cours_id})">Supprimer</button>
         </div>
       </td>
     </tr>`).join('');
